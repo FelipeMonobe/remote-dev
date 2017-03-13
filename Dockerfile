@@ -1,4 +1,13 @@
 FROM node:alpine
-RUN apt-get -y update && apt-get install -y vim
-CMD vim .
 
+RUN apk add --no-cache \
+vim
+
+WORKDIR /
+
+COPY .vimrc /
+
+ENTRYPOINT ["vim"]
+CMD ["."]
+
+EXPOSE 1337
